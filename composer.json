@@ -1,0 +1,22 @@
+{
+    "name": "concerto/_template",
+    "description": "Template",
+    "type": "concerto-library",
+    "license": "GNU GPLv3",
+    "authors": [
+        {
+            "name": "John Porter",
+            "email": "john@designermonkey.co.uk"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.1",
+        "phpmetrics/phpmetrics": "^2.6"
+    }
+}
