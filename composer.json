@@ -1,5 +1,5 @@
 {
-    "name": "concerto/_template",
+    "name": "concerto/template",
     "description": "Template",
     "type": "concerto-library",
     "license": "GNU GPLv3",
