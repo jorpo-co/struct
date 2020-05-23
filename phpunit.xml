@@ -2,8 +2,9 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.1/phpunit.xsd"
     bootstrap="vendor/autoload.php"
+    colors="true"
     executionOrder="depends,defects"
-    forceCoversAnnotation="true"
+    forceCoversAnnotation="false"
     beStrictAboutCoversAnnotation="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTodoAnnotatedTests="true"
@@ -22,7 +23,7 @@
     </filter>
 
     <logging>
-        <log type="coverage-html" target="doc/coverage" />
+        <log type="coverage-html" target="docs/coverage" />
     </logging>
 
 </phpunit>
