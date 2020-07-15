@@ -1,7 +1,7 @@
 {
-    "name": "concerto/template",
-    "description": "Template",
-    "type": "concerto-library",
+    "name": "concerto/struct",
+    "description": "Really stupid simple struct style class for PHP 7",
+    "type": "library",
     "license": "GNU GPLv3",
     "authors": [
         {
@@ -13,16 +13,21 @@
         "bin-dir": "bin"
     },
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "php-ds/php-ds": "^1.2"
     },
     "autoload": {
-        "psr-4": {}
+        "psr-4": {
+            "Jorpo\\Struct\\": "src"
+        }
     },
     "require-dev": {
         "phpunit/phpunit": "^9.1",
         "phpmetrics/phpmetrics": "^2.6"
     },
     "autoload-dev": {
-        "psr-4": {}
+        "psr-4": {
+            "Jorpo\\Struct\\": "tests"
+        }
     }
 }
