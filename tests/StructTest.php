@@ -68,11 +68,13 @@ class StructTest extends TestCase
 
     public function testThatOnlyDefinedPropertiesCanBeSetInStruct()
     {
-        $this->expectException(DomainException::class);
-        new RequiredAndOptionalPropertiesStruct(
+        $struct = new RequiredAndOptionalPropertiesStruct(
             new Pair('required', 'badger'),
             new Pair('mushroom', 'badger')
         );
+
+        $this->assertSame('badger', $struct->required);
+        $this->assertNull($struct->mushroom);
     }
 
     public function testThatStructHasEqualityCheck()
@@ -92,5 +94,16 @@ class StructTest extends TestCase
 
         $this->assertTrue($structOne->equals($structTwo));
         $this->assertFalse($structOne->equals($structThree));
+    }
+
+    public function testThatStructCanBeBuiltFromExistingArray()
+    {
+        $struct = RequiredAndOptionalPropertiesStruct::fromArray([
+            'required' => 'badger',
+            'optional' => 'mushroom',
+        ]);
+
+        $this->assertSame('badger', $struct->required);
+        $this->assertSame('mushroom', $struct->optional);
     }
 }

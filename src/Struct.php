@@ -8,6 +8,16 @@ use Ds\Pair;
 
 abstract class Struct implements Hashable
 {
+    public static function fromArray(array $properties): self
+    {
+        foreach ($properties as $key => $value) {
+            $properties[] = new Pair($key, $value);
+            unset($properties[$key]);
+        }
+
+        return new static(...$properties);
+    }
+
     public function __construct(Pair ...$pairs)
     {
         foreach ($pairs as $key => $pair) {
@@ -18,12 +28,11 @@ abstract class Struct implements Hashable
         }
 
         $this->reportUnsetRequiredProperties();
-        $this->reportAdditionalProperties($pairs);
     }
 
     public function __get(string $name)
     {
-        return $this->{$name};
+        return $this->{$name} ?? null;
     }
 
     public function __set(string $name, $value)
@@ -53,16 +62,6 @@ abstract class Struct implements Hashable
             throw new DomainException(sprintf(
                 "Required parameters: '%s' are not set.",
                 implode(", ", $required)
-            ));
-        }
-    }
-
-    private function reportAdditionalProperties(array $pairs): void
-    {
-        if (!empty($pairs)) {
-            throw new DomainException(sprintf(
-                "Parameters: '%s' are not definedon Struct.",
-                implode(", ", array_column($pairs, 'key'))
             ));
         }
     }
