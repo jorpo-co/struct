@@ -1,5 +1,5 @@
 {
-    "name": "concerto/struct",
+    "name": "jorpo/struct",
     "description": "Really stupid simple struct style class for PHP 7",
     "type": "library",
     "license": "GNU GPLv3",
