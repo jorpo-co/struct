@@ -106,4 +106,17 @@ class StructTest extends TestCase
         $this->assertSame('badger', $struct->required);
         $this->assertSame('mushroom', $struct->optional);
     }
+
+    public function testThatStructCanConvertToArray()
+    {
+        $struct = RequiredAndOptionalPropertiesStruct::fromArray([
+            'required' => 'badger',
+            'optional' => 'mushroom',
+        ]);
+
+        $this->assertSame([
+            'required' => 'badger',
+            'optional' => 'mushroom',
+        ], $struct->toArray());
+    }
 }

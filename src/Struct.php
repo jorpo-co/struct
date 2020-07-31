@@ -49,6 +49,27 @@ abstract class Struct implements Hashable
     }
 
     /**
+     * @return string
+     */
+    public function hash()
+    {
+        return serialize($this);
+    }
+
+    /**
+     * @param Hashable $obj
+     */
+    public function equals($obj): bool
+    {
+        return get_called_class() === get_class($this) && $this->hash() === $obj->hash();
+    }
+
+    public function toArray(): array
+    {
+        return get_object_vars($this);
+    }
+
+    /**
      * @throws DomainException
      */
     private function reportUnsetRequiredProperties(): void
@@ -64,21 +85,5 @@ abstract class Struct implements Hashable
                 implode(", ", $required)
             ));
         }
-    }
-
-    /**
-     * @return string
-     */
-    public function hash()
-    {
-        return serialize($this);
-    }
-
-    /**
-     * @param Hashable $obj
-     */
-    public function equals($obj): bool
-    {
-        return get_called_class() === get_class($this) && $this->hash() === $obj->hash();
     }
 }
